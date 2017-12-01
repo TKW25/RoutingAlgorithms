@@ -43,7 +43,7 @@ void Table::addLinkLatency(unsigned source, Link link){
     if(it != table.end())
         it->second.cost += link.GetLatency();
     else
-        cout << "Something is wrong in addLinkLatency";
+        cout << "Something is wrong in addLinkLatency\n";
 }
 
 void Table::insert(unsigned n, CostToNode cts){
@@ -51,7 +51,11 @@ void Table::insert(unsigned n, CostToNode cts){
 }
 
 void Table::updateTable(unsigned n, double new_cost){
-
+    std::map<unsigned, CostToNode>::iterator it = table.find(n);
+    if(it != table.end())
+        it->second.cost = new_cost;
+    else
+        cout << "Trying to update a value that doesn't exist in table\n";
 }
 
 ostream & Table::Print(ostream &os) const
