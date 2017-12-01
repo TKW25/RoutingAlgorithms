@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include <map>
-
 using namespace std;
+#include "node.h"
+class Node;
 
 struct TopoLink {
     TopoLink(): cost(-1), age(0) {}
@@ -24,10 +25,30 @@ struct TopoLink {
     int age;
 };
 
+struct CostToNode{
+    CostToNode(): cost(-1), node(NULL){}
+
+    CostToNode(const CostToNode &rhs){ *this = rhs; }
+
+    CostToNode & operator=(const CostToNode &rhs){
+        this->cost = rhs.cost;
+        this->node = rhs.node;
+        return *this;
+    }
+
+    CostToNode(double c, Node *n): cost(c), node(n){}
+
+    double cost;
+    Node *node;
+};
+
 // Students should write this class
 class Table {
     private:
         map < int, map < int, TopoLink > > topo;
+        #if defined(DISTANCEVECTOR)
+            map<unsigned, CostToNode> table;
+        #endif
     public:
         Table();
         Table(const Table &);
@@ -41,6 +62,17 @@ class Table {
         #endif
 
         #if defined(DISTANCEVECTOR)
+            /**
+             * Update table with a new cost to node n
+             */
+            void updateTable(unsigned n, double new_cost);
+
+            /**
+             * Add the link latency to the cost from node src to node dest
+             */
+            void addLinkLatency(unsigned source, Link link);
+
+            void insert(unsigned n, CostToNode ctn);
         #endif
 };
 

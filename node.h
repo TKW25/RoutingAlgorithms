@@ -21,7 +21,7 @@ class Node {
         SimulationContext    *context;
         double   bw;
         double   lat;
-        Table routing_table;
+        Table *routing_table;
 
     public:
         Node(unsigned n, SimulationContext *c, double b, double l);
