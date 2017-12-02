@@ -46,9 +46,6 @@ struct CostToNode{
 class Table {
     private:
         map < int, map < int, TopoLink > > topo;
-        #if defined(DISTANCEVECTOR)
-            map<unsigned, CostToNode> table;
-        #endif
     public:
         Table();
         Table(const Table &);
@@ -62,6 +59,7 @@ class Table {
         #endif
 
         #if defined(DISTANCEVECTOR)
+            map<unsigned, CostToNode> table;
             /**
              * Update table with a new cost to node n
              */

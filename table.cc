@@ -2,6 +2,9 @@
 
 Table::Table() {
     topo.clear();
+#if defined(DISTANCEVECTOR)
+    table.clear();
+#endif
 }
 
 Table::Table(const Table & rhs) {
