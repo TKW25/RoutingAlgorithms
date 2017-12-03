@@ -70,7 +70,7 @@ class Table {
              */
             void addLinkLatency(unsigned source, Link link);
 
-            void insert(unsigned n, CostToNode ctn);
+            void insert(unsigned n, CostToNode *ctn);
         #endif
 };
 

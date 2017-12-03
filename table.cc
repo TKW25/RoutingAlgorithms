@@ -49,8 +49,8 @@ void Table::addLinkLatency(unsigned source, Link link){
         cout << "Something is wrong in addLinkLatency\n";
 }
 
-void Table::insert(unsigned n, CostToNode cts){
-    table.insert(pair<unsigned, CostToNode>(n, cts));
+void Table::insert(unsigned n, CostToNode *cts){
+    table.insert(pair<unsigned, CostToNode>(n, *cts));
 }
 
 void Table::updateTable(unsigned n, double new_cost){

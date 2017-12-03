@@ -5,7 +5,7 @@
 #include "node.h"
 #include "link.h"
 #include "table.h"
-
+class Node;
 struct RoutingMessage {
     RoutingMessage();
     RoutingMessage(const RoutingMessage &rhs);
@@ -17,9 +17,10 @@ struct RoutingMessage {
     #if defined(LINKSTATE)
     #endif
     #if defined(DISTANCEVECTOR)
-        RoutingMessage(Table *t, unsigned s): table(t), sender(s) {}
+        RoutingMessage(Table *t, unsigned s, Node *n): table(t), sender(s), sending_node(n) {}
         Table *table;
         unsigned sender;
+        Node *sending_node;
     #endif
 };
 
