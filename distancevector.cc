@@ -7,10 +7,9 @@ DistanceVector::DistanceVector(unsigned n, SimulationContext* c, double b, doubl
     deque<Node*> neighbors = *GetNeighbors();
     //add self
     CostToNode *temp = new CostToNode(0, this);
-    cout << temp->node << endl;
     this->routing_table->insert(this->GetNumber(), temp);
     deque<Node*>::iterator it = neighbors.begin();
-    cout << "We have neighbors of count: " << distance(neighbors.begin(), neighbors.end()) << endl;
+    //cout << "We have neighbors of count: " << distance(neighbors.begin(), neighbors.end()) << endl;
     //add neighbors
     while(it != neighbors.end()){
         temp = new CostToNode(0, *it);
@@ -20,7 +19,7 @@ DistanceVector::DistanceVector(unsigned n, SimulationContext* c, double b, doubl
 
     deque<Link*> links = *GetOutgoingLinks();
     std::deque<Link*>::iterator itt = links.begin();
-    cout << "We have links of count: " << distance(links.begin(), links.end()) << endl;
+    //cout << "We have links of count: " << distance(links.begin(), links.end()) << endl;
     //update latency to all neighbors appropriately
     while(itt != links.end()){
         this->routing_table->addLinkLatency((this->number), **itt);
@@ -29,7 +28,7 @@ DistanceVector::DistanceVector(unsigned n, SimulationContext* c, double b, doubl
 
     //Next we need to send each of our neighbors our distance vector
     RoutingMessage *m = new RoutingMessage(this->routing_table, this->GetNumber(), this);
-    cout << "Table size: " << this->routing_table->table.size() << endl;
+    cout << "Node " << this->GetNumber() << " has Table size: " << this->routing_table->table.size() << endl;
     SendToNeighbors(m);
 }
 
@@ -79,22 +78,24 @@ void DistanceVector::ProcessIncomingRoutingMessage(RoutingMessage *m) {
         double ncost = temp->table.find(this->GetNumber())->second.cost;
         CostToNode *cts = new CostToNode(ncost, m->sending_node);
         this->routing_table->insert(sender, cts);
+        changed = true;
     }
 
     while(it != temp->table.end()){
         //Check if we can get to any new nodes faster
         unsigned targetNode = it->first;
         double tempCost = it->second.cost;
+        double senderCost = this->routing_table->table[sender].cost;
         if(this->routing_table->table.find(targetNode) == this->routing_table->table.end()){
             cout << "Entry not in our table, adding it a route through sender\n";
-            CostToNode *cts = new CostToNode(tempCost, it->second.node);
+            CostToNode *cts = new CostToNode(tempCost + senderCost, it->second.node);
             this->routing_table->insert(targetNode, cts);
             it++;
+            changed = true;
             break;
         }
         unsigned nexthop = this->routing_table->table[targetNode].node->GetNumber();
         double curCost = this->routing_table->table[targetNode].cost;
-        double senderCost = this->routing_table->table[sender].cost;
 
         if(tempCost + senderCost < curCost){
             //It's cheaper for us to go to target node through sender than how we currently do it
@@ -132,10 +133,11 @@ Node* DistanceVector::GetNextHop(Node *destination) {
         //We have this node in our table
         cout << this->routing_table->table[destination->GetNumber()].node << endl;
         Node *temp = new Node(*this->routing_table->table[destination->GetNumber()].node);
+        cout << "At: " << *this << "\nGoing to: " << *temp << endl;
         return temp;
     }
     else
-        cerr << *this << "Didn't have the correct node\n";
+        cerr << this << "Didn't have the correct node\n";
     return NULL;
 }
 
