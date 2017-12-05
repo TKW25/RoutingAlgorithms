@@ -3,22 +3,27 @@ Node 1 has Table size: 1
 Node 2 has Table size: 1
 Node 3 has Table size: 1
 Node 4 has Table size: 1
-Node: 0 has cost 1 to node: 1
-Node 0 has Table size: 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Latency is: 1
+Node: 1 has cost 1 to node: 0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Latency is: 1
+Node: 1 has cost 1 to node: 3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Latency is: 1
+Node: 1 has cost 1 to node: 2
+Node 1 has Table size: 4
 Link has been updated, composing message
 Src: 1Dest: 0Cost: 1
 Trying to update a value that doesn't exist in table
 Link has been updated, composing message
-Src: 1Dest: 3Cost: 1
+Src: 3Dest: 1Cost: 1
+Trying to update a value that doesn't exist in table
+Link has been updated, composing message
+Src: 3Dest: 2Cost: 1
 Trying to update a value that doesn't exist in table
 Link has been updated, composing message
 Src: 2Dest: 3Cost: 1
 Trying to update a value that doesn't exist in table
 Link has been updated, composing message
-Src: 2Dest: 1Cost: 1
-Trying to update a value that doesn't exist in table
-Link has been updated, composing message
-Src: 3Dest: 2Cost: 1
+Src: 1Dest: 3Cost: 1
 Trying to update a value that doesn't exist in table
 Link has been updated, composing message
 Src: 4Dest: 3Cost: 1
@@ -27,48 +32,38 @@ Link has been updated, composing message
 Src: 3Dest: 4Cost: 1
 Trying to update a value that doesn't exist in table
 Link has been updated, composing message
-Src: 3Dest: 1Cost: 1
-Trying to update a value that doesn't exist in table
-Link has been updated, composing message
-Src: 0Dest: 1Cost: 1
+Src: 2Dest: 1Cost: 1
 Trying to update a value that doesn't exist in table
 Link has been updated, composing message
 Src: 1Dest: 2Cost: 1
 Trying to update a value that doesn't exist in table
+Link has been updated, composing message
+Src: 0Dest: 1Cost: 1
+Trying to update a value that doesn't exist in table
 Sender not in our table, adding it to our table
-~~~~~~~~~~~~~~~~~~~~~~~~1.03978e-312
-Sending to: 2 Send from: 1
+fucked at: 3 to: 2
+Printing distance vector table: 
+Going to node: 3 has cost: 0 through: 3
+
+ncost:1.03978e-312
+Sending to: 2 Send from: 3
 Sending table:
 Printing distance vector table: 
-Going to node: 1 has cost: 0 through: 1
+Going to node: 3 has cost: 0 through: 3
 
 Receiving table:
 Printing distance vector table: 
 Going to node: 2 has cost: 0 through: 2
 
 
-!!!!!Sending node: 1Receiving node: 2targetNode: 1
+!!!!!Sending node: 3Receiving node: 2targetNode: 3
 ~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
-Linkt to sender has changed, updating table appropriately
 Sender not in our table, adding it to our table
-~~~~~~~~~~~~~~~~~~~~~~~~0
-Sending to: 1 Send from: 2
-Sending table:
+fucked at: 3 to: 1
 Printing distance vector table: 
-Going to node: 1 has cost: 0 through: 1
-Going to node: 2 has cost: 0 through: 2
+Going to node: 3 has cost: 0 through: 3
 
-Receiving table:
-Printing distance vector table: 
-Going to node: 1 has cost: 0 through: 1
-
-
-!!!!!Sending node: 2Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-Sender not in our table, adding it to our table
-~~~~~~~~~~~~~~~~~~~~~~~~1.03978e-312
+ncost:1.03978e-312
 Sending to: 1 Send from: 3
 Sending table:
 Printing distance vector table: 
@@ -77,20 +72,41 @@ Going to node: 3 has cost: 0 through: 3
 Receiving table:
 Printing distance vector table: 
 Going to node: 1 has cost: 0 through: 1
-Going to node: 2 has cost: 0 through: 2
 
 
 !!!!!Sending node: 3Receiving node: 1targetNode: 3
 ~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
-Linkt to sender has changed, updating table appropriately
 Sender not in our table, adding it to our table
-~~~~~~~~~~~~~~~~~~~~~~~~0
+fucked at: 2 to: 1
+Printing distance vector table: 
+Going to node: 2 has cost: 0 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
+
+ncost:1.03978e-312
+Sending to: 1 Send from: 2
+Sending table:
+Printing distance vector table: 
+Going to node: 2 has cost: 0 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
+
+Receiving table:
+Printing distance vector table: 
+Going to node: 1 has cost: 0 through: 1
+Going to node: 3 has cost: 1.03978e-312 through: 3
+
+
+!!!!!Sending node: 2Receiving node: 1targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+Sender not in our table, adding it to our table
+ncost:1.03978e-312
 Sending to: 3 Send from: 1
 Sending table:
 Printing distance vector table: 
 Going to node: 1 has cost: 0 through: 1
-Going to node: 2 has cost: 0 through: 2
-Going to node: 3 has cost: 0 through: 3
+Going to node: 2 has cost: 1.03978e-312 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
 
 Receiving table:
 Printing distance vector table: 
@@ -98,64 +114,82 @@ Going to node: 3 has cost: 0 through: 3
 
 
 !!!!!Sending node: 1Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-Entry not in our table, adding it a route through sender
-!!!!!Sending node: 1Receiving node: 2targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 2targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
 Entry not in our table, adding it a route through sender
 Sender not in our table, adding it to our table
-~~~~~~~~~~~~~~~~~~~~~~~~1.03978e-312
+fucked at: 1 to: 0
+Printing distance vector table: 
+Going to node: 1 has cost: 0 through: 1
+Going to node: 2 has cost: 1.03978e-312 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
+
+ncost:1.03978e-312
+Sending to: 0 Send from: 1
+Sending table:
+Printing distance vector table: 
+Going to node: 1 has cost: 0 through: 1
+Going to node: 2 has cost: 1.03978e-312 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
+
+Receiving table:
+Printing distance vector table: 
+Going to node: 0 has cost: 0 through: 0
+
+
+!!!!!Sending node: 1Receiving node: 0targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+Entry not in our table, adding it a route through sender
+Sender not in our table, adding it to our table
+ncost:1.03978e-312
 Sending to: 1 Send from: 0
 Sending table:
 Printing distance vector table: 
 Going to node: 0 has cost: 0 through: 0
+Going to node: 1 has cost: 1.03978e-312 through: 1
+Going to node: 2 has cost: 2.07956e-312 through: 1
 
 Receiving table:
 Printing distance vector table: 
 Going to node: 1 has cost: 0 through: 1
-Going to node: 2 has cost: 0 through: 2
-Going to node: 3 has cost: 0 through: 3
+Going to node: 2 has cost: 1.03978e-312 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
 
 
 !!!!!Sending node: 0Receiving node: 1targetNode: 0
 ~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
-Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 0Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 2
+~~~~tempCost: 2.07956e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+Entry not in our table, adding it a route through sender
+!!!!!Sending node: 2Receiving node: 3targetNode: 1
+~~~~tempCost: 2.07956e-312 curCost: 1.03978e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 2
+~~~~tempCost: 0 curCost: 2.07956e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 2.07956e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 1
+~~~~tempCost: 2.07956e-312 curCost: 1.03978e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 2
+~~~~tempCost: 0 curCost: 2.07956e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 2.07956e-312
+Entry not in our table, adding it a route through sender
 Sender not in our table, adding it to our table
-~~~~~~~~~~~~~~~~~~~~~~~~0
-Sending to: 0 Send from: 1
-Sending table:
+fucked at: 3 to: 4
 Printing distance vector table: 
-Going to node: 0 has cost: 0 through: 0
-Going to node: 1 has cost: 0 through: 1
-Going to node: 2 has cost: 0 through: 2
+Going to node: 0 has cost: 2.07956e-312 through: 1
+Going to node: 1 has cost: 1.03978e-312 through: 1
+Going to node: 2 has cost: 2.07956e-312 through: 1
 Going to node: 3 has cost: 0 through: 3
 
-Receiving table:
-Printing distance vector table: 
-Going to node: 0 has cost: 0 through: 0
-
-
-!!!!!Sending node: 1Receiving node: 0targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-Entry not in our table, adding it a route through sender
-Entry not in our table, adding it a route through sender
-!!!!!Sending node: 3Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-Sender not in our table, adding it to our table
-~~~~~~~~~~~~~~~~~~~~~~~~1.03978e-312
+ncost:1.03978e-312
 Sending to: 4 Send from: 3
 Sending table:
 Printing distance vector table: 
-Going to node: 1 has cost: 0 through: 1
-Going to node: 2 has cost: 0 through: 1
+Going to node: 0 has cost: 2.07956e-312 through: 1
+Going to node: 1 has cost: 1.03978e-312 through: 1
+Going to node: 2 has cost: 2.07956e-312 through: 1
 Going to node: 3 has cost: 0 through: 3
 
 Receiving table:
@@ -164,924 +198,1737 @@ Going to node: 4 has cost: 0 through: 4
 
 
 Entry not in our table, adding it a route through sender
-!!!!!Sending node: 3Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 1
+!!!!!Sending node: 2Receiving node: 1targetNode: 1
+~~~~tempCost: 2.07956e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 2
 ~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
 Linkt to sender has changed, updating table appropriately
 Entry not in our table, adding it a route through sender
 Entry not in our table, adding it a route through sender
+!!!!!Sending node: 3Receiving node: 1targetNode: 0
+~~~~tempCost: 2.07956e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 2
+~~~~tempCost: 2.07956e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 0
+~~~~tempCost: 2.07956e-312 curCost: 3.11933e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
 Entry not in our table, adding it a route through sender
-!!!!!Sending node: 3Receiving node: 2targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+!!!!!Sending node: 1Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 3.11933e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 1
+~~~~tempCost: 0 curCost: 2.07956e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 2.07956e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 0
+~~~~tempCost: 2.07956e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 2
+~~~~tempCost: 2.07956e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 0
+~~~~tempCost: 2.07956e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 3Receiving node: 4targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
 Entry not in our table, adding it a route through sender
-!!!!!Sending node: 3Receiving node: 2targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+!!!!!Sending node: 1Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 1Receiving node: 3targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 1Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 3.11933e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 1
+~~~~tempCost: 0 curCost: 2.07956e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 2.07956e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 2.07956e-312
 !!!!!Sending node: 1Receiving node: 0targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 0targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 0targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 0targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
 Sender not in our table, adding it to our table
-~~~~~~~~~~~~~~~~~~~~~~~~1.03978e-312
+ncost:1.03978e-312
 Sending to: 3 Send from: 4
 Sending table:
 Printing distance vector table: 
-Going to node: 0 has cost: 1.03978e-312 through: 3
-Going to node: 1 has cost: 0 through: 3
-Going to node: 2 has cost: 1.03978e-312 through: 3
+Going to node: 0 has cost: 2.07956e-312 through: 3
+Going to node: 1 has cost: 1.03978e-312 through: 3
+Going to node: 2 has cost: 3.11933e-312 through: 3
 Going to node: 3 has cost: 1.03978e-312 through: 3
 Going to node: 4 has cost: 0 through: 4
 
 Receiving table:
 Printing distance vector table: 
-Going to node: 0 has cost: 0 through: 2
-Going to node: 1 has cost: 0 through: 1
-Going to node: 2 has cost: 0 through: 1
+Going to node: 0 has cost: 1.03978e-312 through: 1
+Going to node: 1 has cost: 1.03978e-312 through: 1
+Going to node: 2 has cost: 1.03978e-312 through: 1
 Going to node: 3 has cost: 0 through: 3
 
 
 !!!!!Sending node: 4Receiving node: 3targetNode: 0
-~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+~~~~tempCost: 2.07956e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 4Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 1.03978e-312
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 4Receiving node: 3targetNode: 2
-~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+~~~~tempCost: 3.11933e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 4Receiving node: 3targetNode: 3
 ~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
 !!!!!Sending node: 4Receiving node: 3targetNode: 4
 ~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
-Linkt to sender has changed, updating table appropriately
-!!!!!Sending node: 2Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-Entry not in our table, adding it a route through sender
-!!!!!Sending node: 4Receiving node: 3targetNode: 0
-~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 2
-~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 3
-~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-Entry not in our table, adding it a route through sender
 !!!!!Sending node: 1Receiving node: 2targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 3.11933e-312 senderCost: 2.07956e-312
 !!!!!Sending node: 1Receiving node: 2targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 2.07956e-312 senderCost: 2.07956e-312
 !!!!!Sending node: 1Receiving node: 2targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 2.07956e-312
 !!!!!Sending node: 1Receiving node: 2targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 2targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 0
-~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
-Linkt to sender has changed, updating table appropriately
-!!!!!Sending node: 3Receiving node: 4targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 1.03978e-312
-!!!!!Sending node: 3Receiving node: 4targetNode: 2
-~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
-Linkt to sender has changed, updating table appropriately
-!!!!!Sending node: 3Receiving node: 4targetNode: 3
-~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
-Linkt to sender has changed, updating table appropriately
-!!!!!Sending node: 3Receiving node: 4targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 2.07956e-312
 !!!!!Sending node: 2Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 3.11933e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 2Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 2.07956e-312 curCost: 0 senderCost: 1.03978e-312
 !!!!!Sending node: 2Receiving node: 1targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 2Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 2targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 3.11933e-312 senderCost: 2.07956e-312
 !!!!!Sending node: 1Receiving node: 2targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 2.07956e-312 senderCost: 2.07956e-312
 !!!!!Sending node: 1Receiving node: 2targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 2.07956e-312
 !!!!!Sending node: 1Receiving node: 2targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 2targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 2.07956e-312
 !!!!!Sending node: 0Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 0Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
 !!!!!Sending node: 0Receiving node: 1targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 0Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-Entry not in our table, adding it a route through sender
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 4Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 2.07956e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 4Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 4Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 3.11933e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 4Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
 !!!!!Sending node: 4Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 3Receiving node: 2targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 3.11933e-312 senderCost: 1.03978e-312
+New fastest path to targetNode, updating table appropriately
 !!!!!Sending node: 3Receiving node: 2targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
 !!!!!Sending node: 3Receiving node: 2targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
 !!!!!Sending node: 3Receiving node: 2targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+Entry not in our table, adding it a route through sender
 !!!!!Sending node: 3Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 3Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
 !!!!!Sending node: 3Receiving node: 1targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 3Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+Entry not in our table, adding it a route through sender
+!!!!!Sending node: 3Receiving node: 4targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 3Receiving node: 4targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 3.11933e-312 senderCost: 1.03978e-312
+New fastest path to targetNode, updating table appropriately
+!!!!!Sending node: 3Receiving node: 4targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 3Receiving node: 1targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 3Receiving node: 4targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 3Receiving node: 4targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 2targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 2targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 2targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 2targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 2targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 3Receiving node: 2targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 1Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 3Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 3Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
 !!!!!Sending node: 3Receiving node: 1targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 3Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 3Receiving node: 1targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 2targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 2targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 2targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 2targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 2targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 4Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 4Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 4Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 4Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
 !!!!!Sending node: 4Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 0Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 0Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
 !!!!!Sending node: 0Receiving node: 1targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 0Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 0Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 0Receiving node: 1targetNode: 1
-~~~~tempCost: 1 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 4
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+Entry not in our table, adding it a route through sender
+!!!!!Sending node: 3Receiving node: 4targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 1Receiving node: 0targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 4
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 4
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 0
+~~~~tempCost: 1 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 2
+~~~~tempCost: 1 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 3
+~~~~tempCost: 1 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 0
+~~~~tempCost: 1 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 2
+~~~~tempCost: 1 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 3
+~~~~tempCost: 1 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 0
+~~~~tempCost: 1 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 2
+~~~~tempCost: 1 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 3
+~~~~tempCost: 1 curCost: 1.03978e-312 senderCost: 1.03978e-312
 Link has been updated, composing message
 Src: 2Dest: 1Cost: 100
 !!!!!Sending node: 2Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 2Receiving node: 3targetNode: 1
-~~~~tempCost: 100 curCost: 0 senderCost: 0
+~~~~tempCost: 100 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 2Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 2Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
 !!!!!Sending node: 2Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 Link has been updated, composing message
 Src: 1Dest: 2Cost: 100
 !!!!!Sending node: 1Receiving node: 0targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 0targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 0targetNode: 2
-~~~~tempCost: 100 curCost: 0 senderCost: 0
-Linkt to sender has changed, updating table appropriately
+~~~~tempCost: 100 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 0targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 0targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 3targetNode: 2
-~~~~tempCost: 100 curCost: 0 senderCost: 0
-Linkt to sender has changed, updating table appropriately
+~~~~tempCost: 100 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 2
-~~~~tempCost: 100 curCost: 100 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 2
-~~~~tempCost: 100 curCost: 0 senderCost: 0
-Linkt to sender has changed, updating table appropriately
-!!!!!Sending node: 3Receiving node: 4targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 1
-~~~~tempCost: 0 curCost: 100 senderCost: 0
-New fastest path to targetNode, updating table appropriately
-!!!!!Sending node: 3Receiving node: 2targetNode: 2
-~~~~tempCost: 100 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 2
-~~~~tempCost: 100 curCost: 100 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 2
-~~~~tempCost: 100 curCost: 100 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 100
-!!!!!Sending node: 2Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 100
-!!!!!Sending node: 2Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 100 senderCost: 100
-!!!!!Sending node: 2Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 100
-!!!!!Sending node: 2Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 100
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 Link has been updated, composing message
 Src: 1Dest: 2Cost: 10
 !!!!!Sending node: 1Receiving node: 0targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 0targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 0targetNode: 2
-~~~~tempCost: 10 curCost: 100 senderCost: 0
-New fastest path to targetNode, updating table appropriately
+~~~~tempCost: 10 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 0targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 0targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 3targetNode: 2
-~~~~tempCost: 10 curCost: 100 senderCost: 0
-New fastest path to targetNode, updating table appropriately
+~~~~tempCost: 10 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
 !!!!!Sending node: 1Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 2
-~~~~tempCost: 10 curCost: 10 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 2
-~~~~tempCost: 10 curCost: 100 senderCost: 0
-New fastest path to targetNode, updating table appropriately
-!!!!!Sending node: 3Receiving node: 4targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 2
-~~~~tempCost: 10 curCost: 10 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 2
-~~~~tempCost: 10 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 2
-~~~~tempCost: 10 curCost: 10 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 100
+!!!!!Sending node: 1Receiving node: 2targetNode: 1
+~~~~tempCost: 0 curCost: 100 senderCost: 100
+!!!!!Sending node: 1Receiving node: 2targetNode: 2
+~~~~tempCost: 10 curCost: 0 senderCost: 100
+!!!!!Sending node: 1Receiving node: 2targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 100
+!!!!!Sending node: 1Receiving node: 2targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 100
 Link has been updated, composing message
-Src: 2Dest: 1Cost: 10
-!!!!!Sending node: 1Receiving node: 2targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 10
-!!!!!Sending node: 1Receiving node: 2targetNode: 1
-~~~~tempCost: 0 curCost: 10 senderCost: 10
-!!!!!Sending node: 1Receiving node: 2targetNode: 2
-~~~~tempCost: 10 curCost: 0 senderCost: 10
-!!!!!Sending node: 1Receiving node: 2targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 10
-!!!!!Sending node: 1Receiving node: 2targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 10
+Src: 2Dest: 1Cost: 15
 !!!!!Sending node: 2Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 10
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 2Receiving node: 3targetNode: 1
-~~~~tempCost: 10 curCost: 0 senderCost: 10
+~~~~tempCost: 15 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 2Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 10 senderCost: 10
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 2Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 10
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
 !!!!!Sending node: 2Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 10
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
 !!!!!Sending node: 2Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 10
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 10
 !!!!!Sending node: 2Receiving node: 1targetNode: 1
-~~~~tempCost: 10 curCost: 0 senderCost: 10
+~~~~tempCost: 15 curCost: 0 senderCost: 10
 !!!!!Sending node: 2Receiving node: 1targetNode: 2
 ~~~~tempCost: 0 curCost: 10 senderCost: 10
-Linkt to sender has changed, updating table appropriately
 !!!!!Sending node: 2Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 10
 !!!!!Sending node: 2Receiving node: 1targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 2
-~~~~tempCost: 0 curCost: 10 senderCost: 0
-New fastest path to targetNode, updating table appropriately
-!!!!!Sending node: 1Receiving node: 0targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 0targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 10 senderCost: 0
-New fastest path to targetNode, updating table appropriately
-!!!!!Sending node: 1Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 0Receiving node: 1targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 2
-~~~~tempCost: 0 curCost: 10 senderCost: 0
-New fastest path to targetNode, updating table appropriately
-!!!!!Sending node: 3Receiving node: 4targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 4targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 1
-~~~~tempCost: 0 curCost: 10 senderCost: 0
-New fastest path to targetNode, updating table appropriately
-!!!!!Sending node: 3Receiving node: 2targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 10
+!!!!!Sending node: 2Receiving node: 1targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 10
+!!!!!Sending node: 2Receiving node: 1targetNode: 1
+~~~~tempCost: 15 curCost: 0 senderCost: 10
+!!!!!Sending node: 2Receiving node: 1targetNode: 2
+~~~~tempCost: 0 curCost: 10 senderCost: 10
+!!!!!Sending node: 2Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 10
+!!!!!Sending node: 2Receiving node: 1targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 10
+!!!!!Sending node: 1Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 15
+!!!!!Sending node: 1Receiving node: 2targetNode: 1
+~~~~tempCost: 0 curCost: 15 senderCost: 15
+!!!!!Sending node: 1Receiving node: 2targetNode: 2
+~~~~tempCost: 10 curCost: 0 senderCost: 15
+!!!!!Sending node: 1Receiving node: 2targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 15
+!!!!!Sending node: 1Receiving node: 2targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 15
+Getting next hop
+Printing distance vector table: 
+Going to node: 0 has cost: 1.03978e-312 through: 0
+Going to node: 1 has cost: 0 through: 1
+Going to node: 2 has cost: 10 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
+Going to node: 4 has cost: 1.03978e-312 through: 3
+
+0x9bd84b8
+At: Node(number=1, lat=1, bw=1, routing_table=0x9bd9280)
+Going to: Node(number=0, lat=1, bw=1, routing_table=0x9bd8648) With cost: 1.03978e-312
+Getting next hop
+Printing distance vector table: 
+Going to node: 0 has cost: 1.03978e-312 through: 0
+Going to node: 1 has cost: 0 through: 1
+Going to node: 2 has cost: 10 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
+Going to node: 4 has cost: 1.03978e-312 through: 3
+
+0x9bd98e0
+At: Node(number=1, lat=1, bw=1, routing_table=0x9bd9280)
+Going to: Node(number=2, lat=1, bw=1, routing_table=0x9bda1f8) With cost: 10
+Getting next hop
+Printing distance vector table: 
+Going to node: 0 has cost: 1.03978e-312 through: 0
+Going to node: 1 has cost: 0 through: 1
+Going to node: 2 has cost: 10 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
+Going to node: 4 has cost: 1.03978e-312 through: 3
+
+0x9bda7f0
+At: Node(number=1, lat=1, bw=1, routing_table=0x9bd9280)
+Going to: Node(number=3, lat=1, bw=1, routing_table=0x9bdb108) With cost: 1.03978e-312
+Getting next hop
+Printing distance vector table: 
+Going to node: 0 has cost: 1.03978e-312 through: 1
+Going to node: 1 has cost: 1.03978e-312 through: 1
+Going to node: 2 has cost: 1.03978e-312 through: 1
+Going to node: 3 has cost: 0 through: 3
+Going to node: 4 has cost: 1.03978e-312 through: 4
+
+0x9bdb700
+At: Node(number=3, lat=1, bw=1, routing_table=0x9bdb108)
+Going to: Node(number=4, lat=1, bw=1, routing_table=0x9bdc018) With cost: 1.03978e-312
+Getting next hop
+Printing distance vector table: 
+Going to node: 0 has cost: 1.03978e-312 through: 0
+Going to node: 1 has cost: 0 through: 1
+Going to node: 2 has cost: 10 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
+Going to node: 4 has cost: 1.03978e-312 through: 3
+
+0x9bda7f0
+At: Node(number=1, lat=1, bw=1, routing_table=0x9bd9280)
+Going to: Node(number=3, lat=1, bw=1, routing_table=0x9bdb108) With cost: 1.03978e-312
+Node 0 has Table size: 1
+Node 1 has Table size: 1
+Node 2 has Table size: 1
+Node 3 has Table size: 1
+Node 4 has Table size: 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Latency is: 1
+Node: 1 has cost 1 to node: 0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Latency is: 1
+Node: 1 has cost 1 to node: 3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Latency is: 1
+Node: 1 has cost 1 to node: 2
+Node 1 has Table size: 4
+Link has been updated, composing message
+Src: 1Dest: 0Cost: 1
+Trying to update a value that doesn't exist in table
+Link has been updated, composing message
+Src: 3Dest: 1Cost: 1
+Trying to update a value that doesn't exist in table
+Link has been updated, composing message
+Src: 3Dest: 2Cost: 1
+Trying to update a value that doesn't exist in table
+Link has been updated, composing message
+Src: 2Dest: 3Cost: 1
+Trying to update a value that doesn't exist in table
+Link has been updated, composing message
+Src: 1Dest: 3Cost: 1
+Trying to update a value that doesn't exist in table
+Link has been updated, composing message
+Src: 4Dest: 3Cost: 1
+Trying to update a value that doesn't exist in table
+Link has been updated, composing message
+Src: 3Dest: 4Cost: 1
+Trying to update a value that doesn't exist in table
+Link has been updated, composing message
+Src: 2Dest: 1Cost: 1
+Trying to update a value that doesn't exist in table
+Link has been updated, composing message
+Src: 1Dest: 2Cost: 1
+Trying to update a value that doesn't exist in table
+Link has been updated, composing message
+Src: 0Dest: 1Cost: 1
+Trying to update a value that doesn't exist in table
+Sender not in our table, adding it to our table
+fucked at: 3 to: 2
+Printing distance vector table: 
+Going to node: 3 has cost: 0 through: 3
+
+ncost:1.03978e-312
+Sending to: 2 Send from: 3
+Sending table:
+Printing distance vector table: 
+Going to node: 3 has cost: 0 through: 3
+
+Receiving table:
+Printing distance vector table: 
+Going to node: 2 has cost: 0 through: 2
+
+
 !!!!!Sending node: 3Receiving node: 2targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 2targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+Sender not in our table, adding it to our table
+fucked at: 3 to: 1
+Printing distance vector table: 
+Going to node: 3 has cost: 0 through: 3
+
+ncost:1.03978e-312
+Sending to: 1 Send from: 3
+Sending table:
+Printing distance vector table: 
+Going to node: 3 has cost: 0 through: 3
+
+Receiving table:
+Printing distance vector table: 
+Going to node: 1 has cost: 0 through: 1
+
+
 !!!!!Sending node: 3Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 3Receiving node: 1targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 4Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+Sender not in our table, adding it to our table
+fucked at: 2 to: 1
+Printing distance vector table: 
+Going to node: 2 has cost: 0 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
+
+ncost:1.03978e-312
+Sending to: 1 Send from: 2
+Sending table:
+Printing distance vector table: 
+Going to node: 2 has cost: 0 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
+
+Receiving table:
+Printing distance vector table: 
+Going to node: 1 has cost: 0 through: 1
+Going to node: 3 has cost: 1.03978e-312 through: 3
+
+
+!!!!!Sending node: 2Receiving node: 1targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+Sender not in our table, adding it to our table
+ncost:1.03978e-312
+Sending to: 3 Send from: 1
+Sending table:
+Printing distance vector table: 
+Going to node: 1 has cost: 0 through: 1
+Going to node: 2 has cost: 1.03978e-312 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
+
+Receiving table:
+Printing distance vector table: 
+Going to node: 3 has cost: 0 through: 3
+
+
+!!!!!Sending node: 1Receiving node: 3targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+Entry not in our table, adding it a route through sender
+Sender not in our table, adding it to our table
+fucked at: 1 to: 0
+Printing distance vector table: 
+Going to node: 1 has cost: 0 through: 1
+Going to node: 2 has cost: 1.03978e-312 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
+
+ncost:1.03978e-312
+Sending to: 0 Send from: 1
+Sending table:
+Printing distance vector table: 
+Going to node: 1 has cost: 0 through: 1
+Going to node: 2 has cost: 1.03978e-312 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
+
+Receiving table:
+Printing distance vector table: 
+Going to node: 0 has cost: 0 through: 0
+
+
+!!!!!Sending node: 1Receiving node: 0targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+Entry not in our table, adding it a route through sender
+Sender not in our table, adding it to our table
+ncost:1.03978e-312
+Sending to: 1 Send from: 0
+Sending table:
+Printing distance vector table: 
+Going to node: 0 has cost: 0 through: 0
+Going to node: 1 has cost: 1.03978e-312 through: 1
+Going to node: 2 has cost: 2.07956e-312 through: 1
+
+Receiving table:
+Printing distance vector table: 
+Going to node: 1 has cost: 0 through: 1
+Going to node: 2 has cost: 1.03978e-312 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
+
+
+!!!!!Sending node: 0Receiving node: 1targetNode: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 2
+~~~~tempCost: 2.07956e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+Entry not in our table, adding it a route through sender
 !!!!!Sending node: 2Receiving node: 3targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 2.07956e-312 curCost: 1.03978e-312 senderCost: 2.07956e-312
 !!!!!Sending node: 2Receiving node: 3targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
+~~~~tempCost: 0 curCost: 2.07956e-312 senderCost: 2.07956e-312
 !!!!!Sending node: 2Receiving node: 3targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 3targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 2targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 2targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 2targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 2targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 2targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 2targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 2targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 2targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 2targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 1Receiving node: 2targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 0
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 1
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 2
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 3
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-!!!!!Sending node: 2Receiving node: 1targetNode: 4
-~~~~tempCost: 0 curCost: 0 senderCost: 0
-Getting next hop
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 2.07956e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 1
+~~~~tempCost: 2.07956e-312 curCost: 1.03978e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 2
+~~~~tempCost: 0 curCost: 2.07956e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 2.07956e-312
+Entry not in our table, adding it a route through sender
+Sender not in our table, adding it to our table
+fucked at: 3 to: 4
 Printing distance vector table: 
-Going to node: 0 has cost: 0 through: 1
-Going to node: 1 has cost: 0 through: 3
-Going to node: 2 has cost: 0 through: 2
-Going to node: 3 has cost: 0 through: 1
-Going to node: 4 has cost: 0 through: 3
-
-0x998bd80
-At: Node(number=2, lat=1, bw=1, routing_table=0x998d1f8)
-Going to: Node(number=1, lat=1, bw=1, routing_table=0x998c280)
-Getting next hop
-Printing distance vector table: 
-Going to node: 0 has cost: 0 through: 0
-Going to node: 1 has cost: 0 through: 1
-Going to node: 2 has cost: 0 through: 2
+Going to node: 0 has cost: 2.07956e-312 through: 1
+Going to node: 1 has cost: 1.03978e-312 through: 1
+Going to node: 2 has cost: 2.07956e-312 through: 1
 Going to node: 3 has cost: 0 through: 3
-Going to node: 4 has cost: 0 through: 3
 
-0x998b4b8
-At: Node(number=1, lat=1, bw=1, routing_table=0x998c280)
-Going to: Node(number=0, lat=1, bw=1, routing_table=0x998b648)
-Getting next hop
+ncost:1.03978e-312
+Sending to: 4 Send from: 3
+Sending table:
 Printing distance vector table: 
-Going to node: 0 has cost: 0 through: 0
-Going to node: 1 has cost: 0 through: 1
-Going to node: 2 has cost: 0 through: 1
-Going to node: 3 has cost: 0 through: 1
-Going to node: 4 has cost: 0 through: 1
-
-0x998bd80
-At: Node(number=0, lat=1, bw=1, routing_table=0x998b648)
-Going to: Node(number=1, lat=1, bw=1, routing_table=0x998c280)
-Getting next hop
-Printing distance vector table: 
-Going to node: 0 has cost: 0 through: 0
-Going to node: 1 has cost: 0 through: 1
-Going to node: 2 has cost: 0 through: 2
+Going to node: 0 has cost: 2.07956e-312 through: 1
+Going to node: 1 has cost: 1.03978e-312 through: 1
+Going to node: 2 has cost: 2.07956e-312 through: 1
 Going to node: 3 has cost: 0 through: 3
-Going to node: 4 has cost: 0 through: 3
 
-0x998c8e0
-At: Node(number=1, lat=1, bw=1, routing_table=0x998c280)
-Going to: Node(number=2, lat=1, bw=1, routing_table=0x998d1f8)
-Getting next hop
+Receiving table:
 Printing distance vector table: 
-Going to node: 0 has cost: 0 through: 0
-Going to node: 1 has cost: 0 through: 1
-Going to node: 2 has cost: 0 through: 1
-Going to node: 3 has cost: 0 through: 1
-Going to node: 4 has cost: 0 through: 1
-
-0x998bd80
-At: Node(number=0, lat=1, bw=1, routing_table=0x998b648)
-Going to: Node(number=1, lat=1, bw=1, routing_table=0x998c280)
-Getting next hop
-Printing distance vector table: 
-Going to node: 0 has cost: 0 through: 0
-Going to node: 1 has cost: 0 through: 1
-Going to node: 2 has cost: 0 through: 2
-Going to node: 3 has cost: 0 through: 3
-Going to node: 4 has cost: 0 through: 3
-
-0x998d7f0
-At: Node(number=1, lat=1, bw=1, routing_table=0x998c280)
-Going to: Node(number=3, lat=1, bw=1, routing_table=0x998e108)
-Getting next hop
-Printing distance vector table: 
-Going to node: 0 has cost: 0 through: 2
-Going to node: 1 has cost: 0 through: 1
-Going to node: 2 has cost: 0 through: 1
-Going to node: 3 has cost: 0 through: 3
 Going to node: 4 has cost: 0 through: 4
 
-0x998e700
-At: Node(number=3, lat=1, bw=1, routing_table=0x998e108)
-Going to: Node(number=4, lat=1, bw=1, routing_table=0x998f018)
-Getting next hop
-Printing distance vector table: 
-Going to node: 0 has cost: 0 through: 0
-Going to node: 1 has cost: 0 through: 1
-Going to node: 2 has cost: 0 through: 1
-Going to node: 3 has cost: 0 through: 1
-Going to node: 4 has cost: 0 through: 1
 
-0x998bd80
-At: Node(number=0, lat=1, bw=1, routing_table=0x998b648)
-Going to: Node(number=1, lat=1, bw=1, routing_table=0x998c280)
-Getting next hop
+Entry not in our table, adding it a route through sender
+!!!!!Sending node: 2Receiving node: 1targetNode: 1
+~~~~tempCost: 2.07956e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+Entry not in our table, adding it a route through sender
+Entry not in our table, adding it a route through sender
+!!!!!Sending node: 3Receiving node: 1targetNode: 0
+~~~~tempCost: 2.07956e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 2
+~~~~tempCost: 2.07956e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 0
+~~~~tempCost: 2.07956e-312 curCost: 3.11933e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+Entry not in our table, adding it a route through sender
+!!!!!Sending node: 1Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 3.11933e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 1
+~~~~tempCost: 0 curCost: 2.07956e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 2.07956e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 0
+~~~~tempCost: 2.07956e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 2
+~~~~tempCost: 2.07956e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 0
+~~~~tempCost: 2.07956e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 3Receiving node: 4targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+Entry not in our table, adding it a route through sender
+!!!!!Sending node: 1Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 1Receiving node: 3targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 1Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 3.11933e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 1
+~~~~tempCost: 0 curCost: 2.07956e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 2.07956e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+Sender not in our table, adding it to our table
+ncost:1.03978e-312
+Sending to: 3 Send from: 4
+Sending table:
 Printing distance vector table: 
-Going to node: 0 has cost: 0 through: 0
-Going to node: 1 has cost: 0 through: 1
-Going to node: 2 has cost: 0 through: 1
-Going to node: 3 has cost: 0 through: 1
-Going to node: 4 has cost: 0 through: 1
+Going to node: 0 has cost: 2.07956e-312 through: 3
+Going to node: 1 has cost: 1.03978e-312 through: 3
+Going to node: 2 has cost: 3.11933e-312 through: 3
+Going to node: 3 has cost: 1.03978e-312 through: 3
+Going to node: 4 has cost: 0 through: 4
 
-0x998bd80
-At: Node(number=0, lat=1, bw=1, routing_table=0x998b648)
-Going to: Node(number=1, lat=1, bw=1, routing_table=0x998c280)
-Getting next hop
+Receiving table:
 Printing distance vector table: 
-Going to node: 0 has cost: 0 through: 0
-Going to node: 1 has cost: 0 through: 1
-Going to node: 2 has cost: 0 through: 2
+Going to node: 0 has cost: 1.03978e-312 through: 1
+Going to node: 1 has cost: 1.03978e-312 through: 1
+Going to node: 2 has cost: 1.03978e-312 through: 1
 Going to node: 3 has cost: 0 through: 3
-Going to node: 4 has cost: 0 through: 3
 
-0x998d7f0
-At: Node(number=1, lat=1, bw=1, routing_table=0x998c280)
-Going to: Node(number=3, lat=1, bw=1, routing_table=0x998e108)
+
+!!!!!Sending node: 4Receiving node: 3targetNode: 0
+~~~~tempCost: 2.07956e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 2
+~~~~tempCost: 3.11933e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 4
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 3.11933e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 1
+~~~~tempCost: 0 curCost: 2.07956e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 2.07956e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 0
+~~~~tempCost: 3.11933e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 1
+~~~~tempCost: 2.07956e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 3.11933e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 1
+~~~~tempCost: 0 curCost: 2.07956e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 2.07956e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 2.07956e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 0
+~~~~tempCost: 2.07956e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 2
+~~~~tempCost: 3.11933e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 4
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 3.11933e-312 senderCost: 1.03978e-312
+New fastest path to targetNode, updating table appropriately
+!!!!!Sending node: 3Receiving node: 2targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 3Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+Entry not in our table, adding it a route through sender
+!!!!!Sending node: 3Receiving node: 1targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+Entry not in our table, adding it a route through sender
+!!!!!Sending node: 3Receiving node: 4targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 3Receiving node: 4targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 3.11933e-312 senderCost: 1.03978e-312
+New fastest path to targetNode, updating table appropriately
+!!!!!Sending node: 3Receiving node: 4targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 3Receiving node: 4targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 3Receiving node: 4targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 3Receiving node: 2targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 1Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 4
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 2targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 4
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 1targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+Entry not in our table, adding it a route through sender
+!!!!!Sending node: 3Receiving node: 4targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 3
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 3Receiving node: 4targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 2.07956e-312 senderCost: 1.03978e-312
+Linkt to sender has changed, updating table appropriately
+!!!!!Sending node: 1Receiving node: 0targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 4
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 4Receiving node: 3targetNode: 4
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 0
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 1
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 2
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 0Receiving node: 1targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 0
+~~~~tempCost: 1 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 2
+~~~~tempCost: 1 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 3
+~~~~tempCost: 1 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 0
+~~~~tempCost: 1 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 2
+~~~~tempCost: 1 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 3
+~~~~tempCost: 1 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 0
+~~~~tempCost: 1 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 2
+~~~~tempCost: 1 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 3
+~~~~tempCost: 1 curCost: 1.03978e-312 senderCost: 1.03978e-312
+Link has been updated, composing message
+Src: 2Dest: 1Cost: 100
+!!!!!Sending node: 2Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 1
+~~~~tempCost: 100 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+Link has been updated, composing message
+Src: 1Dest: 2Cost: 100
+!!!!!Sending node: 1Receiving node: 0targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 2
+~~~~tempCost: 100 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 2
+~~~~tempCost: 100 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+Link has been updated, composing message
+Src: 1Dest: 2Cost: 10
+!!!!!Sending node: 1Receiving node: 0targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 2
+~~~~tempCost: 10 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 0targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 1
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 2
+~~~~tempCost: 10 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 1Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 100
+!!!!!Sending node: 1Receiving node: 2targetNode: 1
+~~~~tempCost: 0 curCost: 100 senderCost: 100
+!!!!!Sending node: 1Receiving node: 2targetNode: 2
+~~~~tempCost: 10 curCost: 0 senderCost: 100
+!!!!!Sending node: 1Receiving node: 2targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 100
+!!!!!Sending node: 1Receiving node: 2targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 100
+Link has been updated, composing message
+Src: 2Dest: 1Cost: 15
+!!!!!Sending node: 2Receiving node: 3targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 1
+~~~~tempCost: 15 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 2
+~~~~tempCost: 0 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 0 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 3targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 1.03978e-312
+!!!!!Sending node: 2Receiving node: 1targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 10
+!!!!!Sending node: 2Receiving node: 1targetNode: 1
+~~~~tempCost: 15 curCost: 0 senderCost: 10
+!!!!!Sending node: 2Receiving node: 1targetNode: 2
+~~~~tempCost: 0 curCost: 10 senderCost: 10
+!!!!!Sending node: 2Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 10
+!!!!!Sending node: 2Receiving node: 1targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 10
+!!!!!Sending node: 2Receiving node: 1targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 10
+!!!!!Sending node: 2Receiving node: 1targetNode: 1
+~~~~tempCost: 15 curCost: 0 senderCost: 10
+!!!!!Sending node: 2Receiving node: 1targetNode: 2
+~~~~tempCost: 0 curCost: 10 senderCost: 10
+!!!!!Sending node: 2Receiving node: 1targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 10
+!!!!!Sending node: 2Receiving node: 1targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 10
+!!!!!Sending node: 1Receiving node: 2targetNode: 0
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 15
+!!!!!Sending node: 1Receiving node: 2targetNode: 1
+~~~~tempCost: 0 curCost: 15 senderCost: 15
+!!!!!Sending node: 1Receiving node: 2targetNode: 2
+~~~~tempCost: 10 curCost: 0 senderCost: 15
+!!!!!Sending node: 1Receiving node: 2targetNode: 3
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 15
+!!!!!Sending node: 1Receiving node: 2targetNode: 4
+~~~~tempCost: 1.03978e-312 curCost: 1.03978e-312 senderCost: 15
+Getting next hop
+Printing distance vector table: 
+Going to node: 0 has cost: 1.03978e-312 through: 0
+Going to node: 1 has cost: 0 through: 1
+Going to node: 2 has cost: 10 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
+Going to node: 4 has cost: 1.03978e-312 through: 3
+
+0x81634b8
+At: Node(number=1, lat=1, bw=1, routing_table=0x8164280)
+Going to: Node(number=0, lat=1, bw=1, routing_table=0x8163648) With cost: 1.03978e-312
+Getting next hop
+Printing distance vector table: 
+Going to node: 0 has cost: 1.03978e-312 through: 0
+Going to node: 1 has cost: 0 through: 1
+Going to node: 2 has cost: 10 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
+Going to node: 4 has cost: 1.03978e-312 through: 3
+
+0x81648e0
+At: Node(number=1, lat=1, bw=1, routing_table=0x8164280)
+Going to: Node(number=2, lat=1, bw=1, routing_table=0x81651f8) With cost: 10
+Getting next hop
+Printing distance vector table: 
+Going to node: 0 has cost: 1.03978e-312 through: 0
+Going to node: 1 has cost: 0 through: 1
+Going to node: 2 has cost: 10 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
+Going to node: 4 has cost: 1.03978e-312 through: 3
+
+0x81657f0
+At: Node(number=1, lat=1, bw=1, routing_table=0x8164280)
+Going to: Node(number=3, lat=1, bw=1, routing_table=0x8166108) With cost: 1.03978e-312
+Getting next hop
+Printing distance vector table: 
+Going to node: 0 has cost: 1.03978e-312 through: 1
+Going to node: 1 has cost: 1.03978e-312 through: 1
+Going to node: 2 has cost: 1.03978e-312 through: 1
+Going to node: 3 has cost: 0 through: 3
+Going to node: 4 has cost: 1.03978e-312 through: 4
+
+0x8166700
+At: Node(number=3, lat=1, bw=1, routing_table=0x8166108)
+Going to: Node(number=4, lat=1, bw=1, routing_table=0x8167018) With cost: 1.03978e-312
+Getting next hop
+Printing distance vector table: 
+Going to node: 0 has cost: 1.03978e-312 through: 0
+Going to node: 1 has cost: 0 through: 1
+Going to node: 2 has cost: 10 through: 2
+Going to node: 3 has cost: 1.03978e-312 through: 3
+Going to node: 4 has cost: 1.03978e-312 through: 3
+
+0x81657f0
+At: Node(number=1, lat=1, bw=1, routing_table=0x8164280)
+Going to: Node(number=3, lat=1, bw=1, routing_table=0x8166108) With cost: 1.03978e-312

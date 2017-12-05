@@ -22,6 +22,7 @@ DistanceVector::DistanceVector(unsigned n, SimulationContext* c, double b, doubl
     //cout << "We have links of count: " << distance(links.begin(), links.end()) << endl;
     //update latency to all neighbors appropriately
     while(itt != links.end()){
+        cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Latency is: " << (*itt)->GetLatency() << endl;
         this->routing_table->addLinkLatency((this->number), **itt);
         itt++;
     }
@@ -76,7 +77,10 @@ void DistanceVector::ProcessIncomingRoutingMessage(RoutingMessage *m) {
     if(this->routing_table->table.find(sender) == this->routing_table->table.end()){
         cout << "Sender not in our table, adding it to our table\n";
         double ncost = temp->table.find(this->GetNumber())->second.cost;
-        cout << "~~~~~~~~~~~~~~~~~~~~~~~~" << ncost << endl;
+        if(temp->table.find(this->GetNumber()) == temp->table.end()){
+            cout << "fucked at: " << sender << " to: " << this->GetNumber() << *m->table << endl;
+        }
+        cout << "ncost:" << ncost << endl;
         cout << "Sending to: " << this->GetNumber() << " Send from: " << sender << endl;
         cout << "Sending table:\n" << *m->table << endl;
         cout << "Receiving table:\n" << *this->routing_table << endl << endl;
@@ -88,7 +92,7 @@ void DistanceVector::ProcessIncomingRoutingMessage(RoutingMessage *m) {
     while(it != temp->table.end()){
         //Check if we can get to any new nodes faster
         unsigned targetNode = it->first;
-        double tempCost = it->second.cost;
+        double tempCost = m->table->table[targetNode].cost;
         double senderCost = this->routing_table->table[sender].cost;
         if(this->routing_table->table.find(targetNode) == this->routing_table->table.end()){
             cout << "Entry not in our table, adding it a route through sender\n";
@@ -110,7 +114,7 @@ void DistanceVector::ProcessIncomingRoutingMessage(RoutingMessage *m) {
             changed = true;
         }
         else if(sender == nexthop){
-            if(curCost != tempCost){
+            if(curCost != senderCost){
                 cout << "Linkt to sender has changed, updating table appropriately\n";
                 //Route has changed, needs to be updated
                 this->routing_table->table[targetNode].cost = tempCost;
@@ -140,7 +144,7 @@ Node* DistanceVector::GetNextHop(Node *destination) {
         //We have this node in our table
         cout << this->routing_table->table[destination->GetNumber()].node << endl;
         Node *temp = new Node(*this->routing_table->table[destination->GetNumber()].node);
-        cout << "At: " << *this << "\nGoing to: " << *temp << endl;
+        cout << "At: " << *this << "\nGoing to: " << *temp << " With cost: " << this->routing_table->table[destination->GetNumber()].cost << endl;
         return temp;
     }
     else

@@ -26,7 +26,7 @@ struct TopoLink {
 };
 
 struct CostToNode{
-    CostToNode(): cost(-1), node(NULL){}
+    CostToNode(): cost(-1), node(NULL){cout << "***********************************************\n";}
 
     CostToNode(const CostToNode &rhs){ *this = rhs; }
 
