@@ -41,10 +41,10 @@ void Table::addLinkLatency(unsigned source, Link link){
         i = link.GetDest();
     else
         i = link.GetSrc();
-
+    cout << "Node: " << source << " has cost " << link.GetLatency() << " to node: " << i << endl;
     std::map<unsigned, CostToNode>::iterator it = table.find(i);
     if(it != table.end())
-        it->second.cost += link.GetLatency();
+        it->second.cost = link.GetLatency();
     else
         cout << "Something is wrong in addLinkLatency\n";
 }
@@ -63,7 +63,12 @@ void Table::updateTable(unsigned n, double new_cost){
 
 ostream & Table::Print(ostream &os) const
 {
-  os << "DistanceVector Table()";
+  os << "Printing distance vector table: " << endl;
+  std::map<unsigned, CostToNode>::const_iterator it = table.begin();
+  while(it != table.end()){
+      os << "Going to node: " << it->first << " has cost: " << it->second.cost << " through: " << it->second.node->GetNumber() << endl;
+      it++;
+  }
   return os;
 }
 #endif

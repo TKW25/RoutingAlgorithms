@@ -1,5 +1,5 @@
 #include "distancevector.h"
-
+#include <limits>
 DistanceVector::DistanceVector(unsigned n, SimulationContext* c, double b, double l) :
     Node(n, c, b, l)
 {
@@ -12,7 +12,7 @@ DistanceVector::DistanceVector(unsigned n, SimulationContext* c, double b, doubl
     //cout << "We have neighbors of count: " << distance(neighbors.begin(), neighbors.end()) << endl;
     //add neighbors
     while(it != neighbors.end()){
-        temp = new CostToNode(0, *it);
+        temp = new CostToNode(numeric_limits<double>::max(), *it);
         this->routing_table->insert((*it)->GetNumber(), temp);
         it++;
     }
@@ -58,7 +58,8 @@ void DistanceVector::LinkHasBeenUpdated(Link* l) {
     else
         dest = l->GetSrc();
     //Update table
-    this->routing_table->updateTable(n, l->GetLatency());
+    cout << "Src: " << n << "Dest: " << dest << "Cost: " << l->GetLatency() << endl;
+    this->routing_table->updateTable(dest, l->GetLatency());
     //Create and send routing message
     RoutingMessage *m = new RoutingMessage(this->routing_table, n, this);
     SendToNeighbors(m);
@@ -70,12 +71,15 @@ void DistanceVector::ProcessIncomingRoutingMessage(RoutingMessage *m) {
     Table *temp = m->table;
     bool changed = false;
     map<unsigned, CostToNode>::iterator it = temp->table.begin();
-
     unsigned sender = m->sender;
     
     if(this->routing_table->table.find(sender) == this->routing_table->table.end()){
         cout << "Sender not in our table, adding it to our table\n";
         double ncost = temp->table.find(this->GetNumber())->second.cost;
+        cout << "~~~~~~~~~~~~~~~~~~~~~~~~" << ncost << endl;
+        cout << "Sending to: " << this->GetNumber() << " Send from: " << sender << endl;
+        cout << "Sending table:\n" << *m->table << endl;
+        cout << "Receiving table:\n" << *this->routing_table << endl << endl;
         CostToNode *cts = new CostToNode(ncost, m->sending_node);
         this->routing_table->insert(sender, cts);
         changed = true;
@@ -88,7 +92,7 @@ void DistanceVector::ProcessIncomingRoutingMessage(RoutingMessage *m) {
         double senderCost = this->routing_table->table[sender].cost;
         if(this->routing_table->table.find(targetNode) == this->routing_table->table.end()){
             cout << "Entry not in our table, adding it a route through sender\n";
-            CostToNode *cts = new CostToNode(tempCost + senderCost, it->second.node);
+            CostToNode *cts = new CostToNode(tempCost + senderCost, m->sending_node);
             this->routing_table->insert(targetNode, cts);
             it++;
             changed = true;
@@ -96,13 +100,13 @@ void DistanceVector::ProcessIncomingRoutingMessage(RoutingMessage *m) {
         }
         unsigned nexthop = this->routing_table->table[targetNode].node->GetNumber();
         double curCost = this->routing_table->table[targetNode].cost;
-
+        cout << "!!!!!Sending node: " << sender << "Receiving node: " << this->GetNumber() << "targetNode: " << targetNode << endl;
+        cout << "~~~~tempCost: " << tempCost << " curCost: " << curCost << " senderCost: " << senderCost << endl;
         if(tempCost + senderCost < curCost){
             //It's cheaper for us to go to target node through sender than how we currently do it
             cout << "New fastest path to targetNode, updating table appropriately\n";
-            Node *n = it->second.node;
             this->routing_table->table[targetNode].cost = tempCost + senderCost;
-            routing_table->table[targetNode].node = n;
+            routing_table->table[targetNode].node = m->sending_node;
             changed = true;
         }
         else if(sender == nexthop){
@@ -129,6 +133,9 @@ void DistanceVector::TimeOut() {
 
 Node* DistanceVector::GetNextHop(Node *destination) {
     cout << "Getting next hop\n";
+
+    cout << *this->routing_table << endl;
+
     if(this->routing_table->table.find(destination->GetNumber()) != this->routing_table->table.end()){
         //We have this node in our table
         cout << this->routing_table->table[destination->GetNumber()].node << endl;
@@ -143,6 +150,8 @@ Node* DistanceVector::GetNextHop(Node *destination) {
 
 Table* DistanceVector::GetRoutingTable() {
     cout << "Gettign routing table\n";
+    //Table* table = new Table(this->routing_table);
+    //return table;
     return NULL;
 }
 
