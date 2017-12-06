@@ -8,7 +8,9 @@ Table::Table() {
 }
 
 Table::Table(const Table & rhs) {
-    *this = rhs;
+#if defined(DISTANCEVECTOR)
+    this->table = rhs.table;
+#endif
 }
 
 Table & Table::operator=(const Table & rhs) {

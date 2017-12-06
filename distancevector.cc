@@ -60,7 +60,20 @@ void DistanceVector::LinkHasBeenUpdated(Link* l) {
         dest = l->GetSrc();
     //Update table
     cout << "Src: " << n << "Dest: " << dest << "Cost: " << l->GetLatency() << endl;
-    this->routing_table->updateTable(dest, l->GetLatency());
+    if(this->routing_table->table.find(dest) != this->routing_table->table.end())
+        this->routing_table->updateTable(dest, l->GetLatency());
+    else{
+        //Create new link
+        deque<Node*> neighbors = *GetNeighbors();
+        deque<Node*>::iterator it = neighbors.begin();
+        while(it != neighbors.end()){
+            if((*it)->GetNumber() == dest){
+                this->routing_table->insert(dest, new CostToNode(l->GetLatency(), *it));
+                break;
+            }
+            it++;
+        }
+    }
     //Create and send routing message
     RoutingMessage *m = new RoutingMessage(this->routing_table, n, this);
     SendToNeighbors(m);
@@ -100,27 +113,38 @@ void DistanceVector::ProcessIncomingRoutingMessage(RoutingMessage *m) {
             this->routing_table->insert(targetNode, cts);
             it++;
             changed = true;
-            break;
+            continue;
         }
+        else if(targetNode == sender){
+            it++;
+            continue;
+        }
+
         unsigned nexthop = this->routing_table->table[targetNode].node->GetNumber();
         double curCost = this->routing_table->table[targetNode].cost;
-        cout << "!!!!!Sending node: " << sender << "Receiving node: " << this->GetNumber() << "targetNode: " << targetNode << endl;
-        cout << "~~~~tempCost: " << tempCost << " curCost: " << curCost << " senderCost: " << senderCost << endl;
-        if(tempCost + senderCost < curCost){
+        if(tempCost + senderCost < curCost || ((tempCost + senderCost != curCost) && (nexthop == sender))){
             //It's cheaper for us to go to target node through sender than how we currently do it
             cout << "New fastest path to targetNode, updating table appropriately\n";
             this->routing_table->table[targetNode].cost = tempCost + senderCost;
             routing_table->table[targetNode].node = m->sending_node;
             changed = true;
         }
-        else if(sender == nexthop){
+        /*else if(targetNode == this->GetNumber()){
+            //Check if our direct link to sender has changed
+            double tempp = m->table->table[this->GetNumber()].cost;
+            if(tempp != curCost){
+                this->routing_table->table[targetNode].cost = tempp;
+                changed = true;
+            }
+        }*/
+        /*else if(sender == nexthop){
             if(curCost != senderCost){
                 cout << "Linkt to sender has changed, updating table appropriately\n";
                 //Route has changed, needs to be updated
-                this->routing_table->table[targetNode].cost = tempCost;
+                this->routing_table->table[targetNode].cost = tempCost + senderCost;
                 changed = true;
             }
-        }
+        }*/
         it++;
     }
 
