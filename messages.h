@@ -1,11 +1,9 @@
 #ifndef _messages
 #define _messages
-
 #include <iostream>
 #include "node.h"
 #include "link.h"
 #include "table.h"
-class Node;
 struct RoutingMessage {
     RoutingMessage();
     RoutingMessage(const RoutingMessage &rhs);
@@ -15,6 +13,10 @@ struct RoutingMessage {
     // Anything else you need
 
     #if defined(LINKSTATE)
+        RoutingMessage(map<unsigned, LinkCosts> *t, bool f, unsigned t): table(t), forward(f), target(t) {};
+        bool forward;
+        unsigned target;
+        map<unsigned, LinkCosts> *table;
     #endif
     #if defined(DISTANCEVECTOR)
         RoutingMessage(Table *t, unsigned s, Node *n): table(t), sender(s), sending_node(n) {}

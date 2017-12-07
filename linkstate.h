@@ -1,7 +1,12 @@
 #ifndef _linkstate
 #define _linkstate
-
+class Node;
+class Table;
+class RoutingMessage;
 #include "node.h"
+struct LinkCosts{
+    map<unsigned, double> destCost;
+};
 
 class LinkState: public Node {
     private:
@@ -22,6 +27,7 @@ class LinkState: public Node {
         ostream & Print(ostream & os) const;
 
         // Anything else
+        map<unsigned, LinkCosts> link_table;
 };
 
 inline ostream & operator<<(ostream & os, const LinkState & n) {

@@ -14,7 +14,6 @@ class SimulationContext;
 #include "messages.h"
 
 using namespace std;
-
 class Node {
     protected:
         unsigned number;
@@ -22,7 +21,6 @@ class Node {
         double   bw;
         double   lat;
         Table *routing_table;
-
     public:
         Node(unsigned n, SimulationContext *c, double b, double l);
         Node();

@@ -4,9 +4,8 @@
 #include <iostream>
 #include <map>
 using namespace std;
-#include "node.h"
 class Node;
-
+#include "node.h"
 struct TopoLink {
     TopoLink(): cost(-1), age(0) {}
 
@@ -56,6 +55,20 @@ class Table {
         // Anything else you need
 
         #if defined(LINKSTATE)
+           map<unsigned, CostToNode> table;
+             /**
+             * Update table with a new cost to node n
+             */
+           void updateTable(unsigned n, double new_cost);
+
+            /**
+             * Add the link latency to the cost from node src to node dest
+             */
+           void addLinkLatency(unsigned source, Link link);
+
+           void insert(unsigned n, CostToNode *ctn);
+
+
         #endif
 
         #if defined(DISTANCEVECTOR)
