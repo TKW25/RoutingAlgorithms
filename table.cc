@@ -5,11 +5,17 @@ Table::Table() {
 #if defined(DISTANCEVECTOR)
     table.clear();
 #endif
+#if defined(LINKSTATE)
+    table.clear();
+#endif
 }
 
 Table::Table(const Table & rhs) {
 #if defined(DISTANCEVECTOR)
     this->table = rhs.table;
+#endif
+#if defined(LINKSTATE)
+    this->table=rhs.table;
 #endif
 }
 

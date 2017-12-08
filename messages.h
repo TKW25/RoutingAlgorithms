@@ -2,8 +2,11 @@
 #define _messages
 #include <iostream>
 #include "node.h"
+class Node;
 #include "link.h"
 #include "table.h"
+#include "linkstate.h"
+class LinkState;
 struct RoutingMessage {
     RoutingMessage();
     RoutingMessage(const RoutingMessage &rhs);
@@ -13,7 +16,7 @@ struct RoutingMessage {
     // Anything else you need
 
     #if defined(LINKSTATE)
-        RoutingMessage(map<unsigned, LinkCosts> *t, bool f, unsigned t): table(t), forward(f), target(t) {};
+        RoutingMessage(map<unsigned, LinkCosts> *t, bool f, unsigned tt): forward(f), target(tt), table(t) {};
         bool forward;
         unsigned target;
         map<unsigned, LinkCosts> *table;

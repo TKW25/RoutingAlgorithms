@@ -5,7 +5,14 @@ class Table;
 class RoutingMessage;
 #include "node.h"
 struct LinkCosts{
+    LinkCosts(){ destCost.clear(); src = 0; }
+    LinkCosts(unsigned s, double d, unsigned ss){
+        destCost.clear();
+        destCost.insert(pair<unsigned, double>(s, d));
+        src = ss;
+    }
     map<unsigned, double> destCost;
+    unsigned src;
 };
 
 class LinkState: public Node {
