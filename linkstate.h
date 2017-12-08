@@ -24,6 +24,7 @@ class LinkState: public Node {
         ostream & Print(ostream & os) const;
 
         // Anything else
+        map<unsigned, LinkCosts> link_table;
 };
 
 inline ostream & operator<<(ostream & os, const LinkState & n) {
