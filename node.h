@@ -14,6 +14,17 @@ class SimulationContext;
 
 #include "messages.h"
 
+struct LinkCosts{
+    LinkCosts(){ destCost.clear(); src = 0; }
+    LinkCosts(unsigned s, double d, unsigned ss){
+        destCost.clear();
+        destCost.insert(pair<unsigned, double>(s, d));
+        src = ss;
+    }
+    map<unsigned, double> destCost;
+    unsigned src;
+};
+
 using namespace std;
 class Node {
     protected:
@@ -22,6 +33,7 @@ class Node {
         double   bw;
         double   lat;
         Table *routing_table;
+        map<unsigned, LinkCosts> link_table;
     public:
         Node(unsigned n, SimulationContext *c, double b, double l);
         Node();
@@ -52,6 +64,7 @@ class Node {
         virtual Node *GetNextHop(Node *destination);
         virtual Table *GetRoutingTable();
         virtual ostream & Print(ostream &os) const;
+    
 
 };
 
