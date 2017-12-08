@@ -4,16 +4,6 @@ class Node;
 class Table;
 class RoutingMessage;
 #include "node.h"
-struct LinkCosts{
-    LinkCosts(){ destCost.clear(); src = 0; }
-    LinkCosts(unsigned s, double d, unsigned ss){
-        destCost.clear();
-        destCost.insert(pair<unsigned, double>(s, d));
-        src = ss;
-    }
-    map<unsigned, double> destCost;
-    unsigned src;
-};
 
 class LinkState: public Node {
     private:
@@ -34,7 +24,6 @@ class LinkState: public Node {
         ostream & Print(ostream & os) const;
 
         // Anything else
-        map<unsigned, LinkCosts> link_table;
 };
 
 inline ostream & operator<<(ostream & os, const LinkState & n) {
