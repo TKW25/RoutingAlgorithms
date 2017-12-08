@@ -4,7 +4,8 @@ class Node;
 class Table;
 class RoutingMessage;
 #include "node.h"
-
+#include <vector>
+#include <limits>
 class LinkState: public Node {
     private:
         // Anything you need in addition to Node members
@@ -19,6 +20,8 @@ class LinkState: public Node {
         void LinkHasBeenUpdated(Link *l);
         void ProcessIncomingRoutingMessage(RoutingMessage *m);
         void TimeOut();
+        void buildRoutingTable();
+        void flood();
         Node* GetNextHop(Node* destination);
         Table* GetRoutingTable();
         ostream & Print(ostream & os) const;

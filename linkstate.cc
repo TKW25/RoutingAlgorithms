@@ -19,16 +19,19 @@ LinkState::LinkState(unsigned n, SimulationContext* c, double b, double l) :
         if(dest == src)
             dest = (*it)->GetSrc();
         //insert new link latency
-        if(link_table.destCost.empty())
-            link_table.insert(pair<unsigned, LinkCosts>(src, *(new LinkCost(dest, (*it)->GetLatency())), src));
+        if(link_table.find(src) == link_table.end()){
+            LinkCosts *ttttt =  new LinkCosts(dest, (*it)->GetLatency());
+            link_table.insert(pair<unsigned, LinkCosts>(src, *ttttt));
+        }
         else{
-            if(link_table.destCost.find(dest) != link_table.destCost.end()){
+            if(link_table[src].destCost.find(dest) != link_table[src].destCost.end()){
                 //We have two links going to the same node, we only care about the cheapest one
-                if(link_table.destCost[dest] > (*it)->GetLatency())
-                    link_table.destCost[dest] = (*it)->GetLatency();
+                if(link_table[src].destCost[dest] > (*it)->GetLatency())
+                    link_table[src].destCost[dest] = (*it)->GetLatency();
             }
-            else
-                link_table.insert(pair<unsigned, LinkCosts>(src, *(new LinkCost(dest, (*it)->GetLatency())), src));
+            else{
+                link_table[src].destCost.insert(pair<unsigned, double>(src, (*it)->GetLatency()));
+            }
         }
         it++;
     }
@@ -78,15 +81,15 @@ void LinkState::buildRoutingTable(){
         neighbors.insert(pair<unsigned, Node*>((*iter)->GetNumber(), *iter));
     }
     //Dijkstra's
-    vector<unsigned> check;
+    vector <unsigned> check;
     check.push_back(this->GetNumber());
-    for(int i = 0; i < this->link_table.size(); i++){
+    for(unsigned i = 0; i < this->link_table.size(); i++){
         unsigned temp = check.back();
         unsigned tempp;
         if(this->link_table.find(temp) != this->link_table.end()){
-            map<unsigned, double>::iterator it = this->link_table[temp];
-            check.pop_back;
-            while(it != this->link_table.end()){
+            map<unsigned, double>::iterator it = this->link_table[temp].destCost.begin();
+            check.pop_back();
+            while(it != this->link_table[temp].destCost.end()){
                 check.push_back(it->first);
                 tempp = it->first;
                 double tempCost = it->second; //Cost of link
@@ -121,7 +124,8 @@ void LinkState::buildRoutingTable(){
                             nn = neighbors[temp];
                         else
                             nn = neighbors[tempp];
-                        this->routing_table->table.insert(pair<unsigned, CostToNode*>(tempp, new CostToNode(d, nn)));
+                        CostToNode *cts = new CostToNode(d, nn);
+                        this->routing_table->insert(tempp, cts);
                     }
                 }
                 it++;

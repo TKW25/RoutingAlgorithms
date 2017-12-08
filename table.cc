@@ -35,12 +35,6 @@ ostream & Table::Print(ostream &os) const
 #endif
 
 #if defined(LINKSTATE)
-ostream & Table::Print(ostream &os) const
-{
-  os << "LinkState Table()";
-  return os;
-}
-
 void Table::addLinkLatency(unsigned source, Link link){
     unsigned i;
     if(source == link.GetSrc())

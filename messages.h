@@ -5,18 +5,14 @@
 class Node;
 #include "link.h"
 #include "table.h"
-#include "linkstate.h"
-class LinkState;
 
 struct LinkCosts{
-    LinkCosts(){ destCost.clear(); src = 0; }
-    LinkCosts(unsigned s, double d, unsigned ss){
+    LinkCosts(){ destCost.clear(); }
+    LinkCosts(unsigned s, double d){
         destCost.clear();
         destCost.insert(pair<unsigned, double>(s, d));
-        src = ss;
     }
     map<unsigned, double> destCost;
-    unsigned src;
 };
 
 struct RoutingMessage {
