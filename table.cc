@@ -11,12 +11,7 @@ Table::Table() {
 }
 
 Table::Table(const Table & rhs) {
-#if defined(DISTANCEVECTOR)
     this->table = rhs.table;
-#endif
-#if defined(LINKSTATE)
-    this->table=rhs.table;
-#endif
 }
 
 Table & Table::operator=(const Table & rhs) {

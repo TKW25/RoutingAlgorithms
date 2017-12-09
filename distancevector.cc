@@ -179,8 +179,7 @@ Node* DistanceVector::GetNextHop(Node *destination) {
 Table* DistanceVector::GetRoutingTable() {
     cout << "Gettign routing table\n";
     //Table* table = new Table(this->routing_table);
-    //return table;
-    return NULL;
+    return new Table(*routing_table);
 }
 
 ostream & DistanceVector::Print(ostream &os) const { 

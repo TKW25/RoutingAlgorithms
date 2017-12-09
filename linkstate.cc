@@ -142,12 +142,21 @@ void LinkState::flood(){
 
 }
 
-Node* LinkState::GetNextHop(Node *destination) { 
+Node* LinkState::GetNextHop(Node *destination) {
+    cout << "Getting next hop\n";
+    cout << *this->routing_table << endl;
+    if(this->routing_table->table.find(destination->GetNumber()) != this->routing_table->table.end()){
+        Node *temp = new Node(*this->routing_table->table[destination->GetNumber()].node);
+        return temp;
+    }
+    else
+        cerr << this << "Didn't have the correct node\n";
     return NULL;
 }
 
 Table* LinkState::GetRoutingTable() {
-    return NULL;
+    cout << "Getting routing table\n";
+    return new Table(*routing_table);
 }
 
 ostream & LinkState::Print(ostream &os) const { 
