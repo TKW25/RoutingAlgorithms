@@ -23,6 +23,11 @@ struct LinkCosts{
         timer = t;
         destCost.clear();
     }
+    LinkCosts & operator=(const LinkCosts & rhs){
+        this->destCost = rhs.destCost;
+        this->timer = rhs.timer;
+        return *this;
+    }
     map<unsigned, double> destCost;
     time_t timer;
 };

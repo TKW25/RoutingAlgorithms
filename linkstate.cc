@@ -60,7 +60,6 @@ LinkState::~LinkState() {}
 
 /** Write the following functions.  They currently have dummy implementations **/
 void LinkState::LinkHasBeenUpdated(Link* l) {
-    cerr << *this << ": Link Update: " << *l << endl;
     unsigned dest = l->GetDest();
     unsigned src = l->GetSrc();
     if(dest == this->GetNumber()){
@@ -92,18 +91,36 @@ void LinkState::LinkHasBeenUpdated(Link* l) {
 }
 
 void LinkState::ProcessIncomingRoutingMessage(RoutingMessage *m) {
-    cerr << *this << " got a routing message: " << *m << " (ignored)" << endl;
     //Process routing message
     bool forward = m->forward;
     unsigned target = m->target;
     map<unsigned, LinkCosts> t = *m->table;
     bool changed = false;
     map<unsigned, LinkCosts>::iterator iter = t.begin();
-    while(iter != t.end() && !forward){
+
+    while(iter != t.end()){
+        if(link_table.find(iter->first) != link_table.end()){
+            //We have this entry check timer
+            if(difftime(link_table[iter->first].timer, iter->second.timer) < 0){
+                //New entry is more up to date, copy it
+                link_table[iter->first] = iter->second;
+                changed = true;
+            }
+        }
+        else{
+            //Don't have this entry copy
+            link_table[iter->first] = iter->second;
+            changed = true;
+        }
+        iter++;
+    }
+
+    /*while(iter != t.end()){
         if(link_table.find(iter->first) != link_table.end()){
             time_t temp = link_table[iter->first].timer;
             if(difftime(temp, iter->second.timer > 0)){
                 //our current link is "newer" than iters, ignore it
+                cout << ":v\n";
                 iter++;
                 continue;
             }
@@ -129,10 +146,10 @@ void LinkState::ProcessIncomingRoutingMessage(RoutingMessage *m) {
             //Node not in our network, add it
             link_table.insert(pair<unsigned, LinkCosts>(iter->first, *new LinkCosts(iter->second.timer)));
             changed = true;
-            continue; //Get the links now
+            link_table[iter->first] = iter->second;
         }
         iter++;
-    }
+    }*/
 
     //Check if we are meant to be forwarding this on
     if(forward){
@@ -233,6 +250,11 @@ void LinkState::flood(){
         RoutingMessage *m;
         unsigned target = iter->first;
         bool forward = false;
+
+        cout << "At: " << this->GetNumber()  << " Targetting: " << target << endl << *routing_table << endl;
+
+        cout << *routing_table->table[target].node << endl;
+        unsigned temp = 129345923; 
         unsigned sendTo = routing_table->table[target].node->GetNumber();
         if(sendTo != target)
             forward = true;
@@ -250,7 +272,7 @@ Node* LinkState::GetNextHop(Node *destination) {
         return temp;
     }
     else
-        cerr << this << "Didn't have the correct node\n";
+        cerr << *this << " Didn't have the correct node\n";
     return NULL;
 }
 
