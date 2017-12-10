@@ -14,7 +14,4 @@ digraph path {
 2 -> 1 [ label="100.0" ];
 0 -> 1 [ label="  1.0" ];
 1 -> 2 [ label="100.0" ];
-0 -> 1 [ color=red ];
-1 -> 3 [ color=red ];
-3 -> 4 [ color=red ];
 }

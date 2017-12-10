@@ -160,11 +160,13 @@ void LinkState::TimeOut() {
 
 void LinkState::buildRoutingTable(){
     //Get neighbors
-    deque<Node*>::iterator iter = GetNeighbors()->begin();
+    deque<Node*> temp = *GetNeighbors();
+    deque<Node*>::iterator iter = temp.begin();
     map<unsigned, Node*> neighbors;
     neighbors.clear();
-    while(iter != GetNeighbors()->end()){ //inefficient
+    while(iter != temp.end()){ //inefficient
         neighbors.insert(pair<unsigned, Node*>((*iter)->GetNumber(), *iter));
+        iter++;
     }
     //Dijkstra's
     vector <unsigned> check;
