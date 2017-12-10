@@ -5,14 +5,26 @@
 class Node;
 #include "link.h"
 #include "table.h"
+#include <time.h>
 
 struct LinkCosts{
     LinkCosts(){ destCost.clear(); }
     LinkCosts(unsigned s, double d){
         destCost.clear();
         destCost.insert(pair<unsigned, double>(s, d));
+        time(&timer);
+    }
+    LinkCosts(unsigned s, double d, time_t t){
+        destCost.clear();
+        destCost.insert(pair<unsigned, double>(s, d));
+        timer = t;
+    }
+    LinkCosts(time_t t){
+        timer = t;
+        destCost.clear();
     }
     map<unsigned, double> destCost;
+    time_t timer;
 };
 
 struct RoutingMessage {

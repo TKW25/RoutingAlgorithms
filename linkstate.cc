@@ -61,15 +61,101 @@ LinkState::~LinkState() {}
 /** Write the following functions.  They currently have dummy implementations **/
 void LinkState::LinkHasBeenUpdated(Link* l) {
     cerr << *this << ": Link Update: " << *l << endl;
-    SendToNeighbors(new RoutingMessage());
+    unsigned dest = l->GetDest();
+    unsigned src = l->GetSrc();
+    if(dest == this->GetNumber()){
+        src = dest;
+        dest = src;
+    }
+
+    if(link_table.find(src) != link_table.end()){
+        if(link_table[src].destCost.find(dest) != link_table[src].destCost.end()){
+            //Link exists, update it
+            link_table[src].destCost[dest] = l->GetLatency();
+            time(&link_table[src].timer);
+        }
+        else{
+            //No dest link exists, create it
+            link_table[src].destCost.insert(pair<unsigned, double>(dest, l->GetLatency()));
+            time(&link_table[src].timer);
+        }
+    }
+    else{
+        //No source entry, don't think this should ever run
+        cerr << "Why is this running\n";
+        link_table.insert(pair<unsigned, LinkCosts>(src, *new LinkCosts(dest, l->GetLatency())));
+    }
+
+    //link table updated, build a new routing table then flood our link table
+    buildRoutingTable();
+    flood();
 }
 
 void LinkState::ProcessIncomingRoutingMessage(RoutingMessage *m) {
     cerr << *this << " got a routing message: " << *m << " (ignored)" << endl;
+    //Process routing message
+    bool forward = m->forward;
+    unsigned target = m->target;
+    map<unsigned, LinkCosts> t = *m->table;
+    bool changed = false;
+    map<unsigned, LinkCosts>::iterator iter = t.begin();
+    while(iter != t.end() && !forward){
+        if(link_table.find(iter->first) != link_table.end()){
+            time_t temp = link_table[iter->first].timer;
+            if(difftime(temp, iter->second.timer > 0)){
+                //our current link is "newer" than iters, ignore it
+                iter++;
+                continue;
+            }
+            map<unsigned, double>::iterator it = iter->second.destCost.begin();
+            while(it != iter->second.destCost.end()){
+                if(link_table[iter->first].destCost.find(it->first) != link_table[iter->first].destCost.end()){
+                    //we currently have this link, see if it's changed
+                    if(link_table[iter->first].destCost[it->first] != it->second){
+                        changed = true;
+                        link_table[iter->first].destCost[it->first] = it->second;
+                        link_table[iter->first].timer = iter->second.timer;
+                    }
+                }
+                else{
+                    //Don't have this link, add it
+                    changed = true;
+                    link_table[iter->first].destCost.insert(pair<unsigned, double>(it->first, it->second));
+                }
+                it++;
+            }
+        }
+        else{
+            //Node not in our network, add it
+            link_table.insert(pair<unsigned, LinkCosts>(iter->first, *new LinkCosts(iter->second.timer)));
+            changed = true;
+            continue; //Get the links now
+        }
+        iter++;
+    }
+
+    //Check if we are meant to be forwarding this on
+    if(forward){
+        //Build routing message and forward
+        Node *temp = this->routing_table->table[target].node;
+        RoutingMessage *m;
+        if(temp->GetNumber() == target)
+            m = new RoutingMessage(&this->link_table, false, 0);
+        else
+            m = new RoutingMessage(&this->link_table, true, target);
+        this->SendToNeighbor(temp, m);
+    }
+
+    if(changed){
+        //Our link table has changed, update routing_table and flood our new link table
+        buildRoutingTable();
+        flood();
+    }
 }
 
 void LinkState::TimeOut() {
     cerr << *this << " got a timeout: (ignored)" << endl;
+
 }
 
 void LinkState::buildRoutingTable(){
@@ -139,7 +225,19 @@ void LinkState::buildRoutingTable(){
 }
 
 void LinkState::flood(){
-
+    //Send our link table to all known nodes in the network
+    map<unsigned, CostToNode>::iterator iter = routing_table->table.begin();
+    while(iter != routing_table->table.end()){
+        RoutingMessage *m;
+        unsigned target = iter->first;
+        bool forward = false;
+        unsigned sendTo = routing_table->table[target].node->GetNumber();
+        if(sendTo != target)
+            forward = true;
+        m = new RoutingMessage(&this->link_table, forward, sendTo);
+        SendToNeighbor(routing_table->table[target].node, m);
+        iter++;
+    }
 }
 
 Node* LinkState::GetNextHop(Node *destination) {
