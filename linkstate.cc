@@ -8,6 +8,13 @@ LinkState::LinkState(unsigned n, SimulationContext* c, double b, double l) :
     this->link_table.clear();
     CostToNode *temp = new CostToNode(0, this);
     this->routing_table->insert(this->GetNumber(), temp);
+    deque<Node*> neighbors = *GetNeighbors();
+    deque<Node*>::iterator itt = neighbors.begin();
+    this->nodes.clear();
+    while(itt != neighbors.end()){
+        nodes.insert(pair<unsigned, Node*>((*itt)->GetNumber(), *itt));
+        itt++;
+    }
 
     deque<Link*> links = *GetOutgoingLinks();
     deque<Link*>::iterator it = links.begin();
@@ -115,7 +122,7 @@ void LinkState::ProcessIncomingRoutingMessage(RoutingMessage *m) {
         iter++;
     }
 
-    /*while(iter != t.end()){
+    /*while(iter != t.end() && !forward){
         if(link_table.find(iter->first) != link_table.end()){
             time_t temp = link_table[iter->first].timer;
             if(difftime(temp, iter->second.timer > 0)){
@@ -154,19 +161,33 @@ void LinkState::ProcessIncomingRoutingMessage(RoutingMessage *m) {
     //Check if we are meant to be forwarding this on
     if(forward){
         //Build routing message and forward
+        if(this->routing_table->table.find(target) == this->routing_table->table.end())
+            cerr << "ERRRRRROOROROROROROROROOROROOROROOROR\n\n\n\n\n";
         Node *temp = this->routing_table->table[target].node;
         RoutingMessage *m;
         if(temp->GetNumber() == target)
-            m = new RoutingMessage(&this->link_table, false, 0);
+            m = new RoutingMessage(&this->link_table, false, 0, nodes);
         else
-            m = new RoutingMessage(&this->link_table, true, target);
+            m = new RoutingMessage(&this->link_table, true, target, nodes);
         this->SendToNeighbor(temp, m);
     }
+
+    mergeNodes(m->nodes);
 
     if(changed){
         //Our link table has changed, update routing_table and flood our new link table
         buildRoutingTable();
-        flood();
+ //       flood();
+    }
+}
+
+void LinkState::mergeNodes(map<unsigned, Node *> n){
+    map<unsigned, Node *>::iterator it = n.begin();
+    while(it != n.end()){
+        if(this->nodes.find(it->first) == this->nodes.end()){
+            nodes.insert(pair<unsigned, Node*>(it->first, it->second));
+        }
+        it++;
     }
 }
 
@@ -177,15 +198,96 @@ void LinkState::TimeOut() {
 
 void LinkState::buildRoutingTable(){
     //Get neighbors
-    deque<Node*> temp = *GetNeighbors();
-    deque<Node*>::iterator iter = temp.begin();
+    cout << "Building..." << this->GetNumber() << endl;
+   deque<Node*> ttt = *GetNeighbors();
+    deque<Node*>::iterator iter = ttt.begin();
     map<unsigned, Node*> neighbors;
     neighbors.clear();
-    while(iter != temp.end()){ //inefficient
+
+    while(iter != ttt.end()){ //inefficient
+        cout << **iter << endl;
         neighbors.insert(pair<unsigned, Node*>((*iter)->GetNumber(), *iter));
+        if(this->link_table.find(this->GetNumber()) != this->link_table.end()){
+            if(this->link_table[this->GetNumber()].destCost.find((*iter)->GetNumber()) != this->link_table[this->GetNumber()].destCost.end()){
+                //Have link to our neighbor, add it to routing table
+                if(this->routing_table->table.find((*iter)->GetNumber()) != this->routing_table->table.end()){
+                    //link exists, update it
+                    if(this->routing_table->table[(*iter)->GetNumber()].cost > this->link_table[this->GetNumber()].destCost[(*iter)->GetNumber()]){
+                        this->routing_table->table[(*iter)->GetNumber()].cost = this->link_table[this->GetNumber()].destCost[(*iter)->GetNumber()];
+                    }
+                }
+                else{
+                    //link doesn't exist, create it
+                    CostToNode *cts = new CostToNode(this->link_table[this->GetNumber()].destCost[(*iter)->GetNumber()], *iter);
+                    this->routing_table->insert((*iter)->GetNumber(), cts);
+                }
+            }
+        }
         iter++;
+    } 
+
+    //Reset routing_table
+    /*routing_table->table.clear();
+
+    typedef pair<double, unsigned> M;
+    priority_queue<M, vector<M>, greater<M> > pq;
+
+    set<unsigned> check;
+
+    pq.push(pair<double, unsigned>(0, this->GetNumber()));
+
+    while(!pq.empty()){
+        unsigned target = pq.top().second;
+    
+        if(check.find(target) != check.end()){
+            pq.pop();
+            continue;
+        }
+
+        double path = 0;
+        cout << "this: " << this->GetNumber() << " target: "
+             << target << endl;
+        set<unsigned>::iterator ic;
+        for(ic = check.begin(); ic != check.end(); ic++){
+            if(target == this->GetNumber())
+                break;
+
+            if(link_table[*ic].destCost.find(target) != link_table[*ic].destCost.end()){
+                path = link_table[*ic].destCost[target];
+            }
+            else if(routing_table->table.find(target) != routing_table->table.end()){
+                path = routing_table->table[target].cost;
+            }
+            else
+                cerr << "somethignsoemthing\n";
+        }
+cout << "made it\n";
+        if(nodes.find(target) == nodes.end()){
+            pq.pop();
+        }
+        else if(routing_table->table.find(target) == routing_table->table.end()){
+            //No entry, add it
+            Node *n = nodes[target];
+            CostToNode *cts = new CostToNode(pq.top().first + path, n);
+            routing_table->insert(target, cts);
+        }
+        else{
+            //Entry, see if new one is better
+            double d = routing_table->table[target].cost;
+            if(d > pq.top().first + path){
+                routing_table->updateTable(target, pq.top().first + path);
+            }
+        }
+        pq.pop();
+        check.insert(target);
+        //Add links
+        map<unsigned, double>::iterator i = link_table[target].destCost.begin();
+        while(i != link_table[target].destCost.end()){
+            pq.push(pair<double, unsigned>(i->second, i->first));
+            i++;
+        }
     }
-    //Dijkstra's
+    cout << "break\n";*/
     vector <unsigned> check;
     check.push_back(this->GetNumber());
     for(unsigned i = 0; i < this->link_table.size(); i++){
@@ -197,40 +299,65 @@ void LinkState::buildRoutingTable(){
             while(it != this->link_table[temp].destCost.end()){
                 check.push_back(it->first);
                 tempp = it->first;
-                double tempCost = it->second; //Cost of link
-                double curCost = numeric_limits<double>::max(); //Current cost to link destination
-                double neighborCost = 0; //Cost to neighbor needed to reach destination if not a direct link
-                if(this->routing_table->table.find(it->first) != this->routing_table->table.end()){
-                    curCost = this->routing_table->table[it->first].cost;
-                    if(this->GetNumber() != temp){
-                        if(this->routing_table->table.find(temp) != this->routing_table->table.end()){
-                            neighborCost = this->routing_table->table[temp].cost;
-                        }
-                        else
-                            neighborCost = numeric_limits<double>::max(); //no way to reach this route
-                    }
-                }
-                //Got costs, see if this is a new fastest path
-                if(curCost > tempCost + neighborCost && neighborCost != numeric_limits<double>::max()){
-                    //new fastest path
+                if(this->link_table[this->GetNumber()].destCost.find(tempp) != this->link_table[this->GetNumber()].destCost.end() && temp == this->GetNumber()){
+                    //We have a direct path to tempp
                     if(this->routing_table->table.find(tempp) != this->routing_table->table.end()){
-                        //Update old path
-                        this->routing_table->table[tempp].cost = tempCost + neighborCost;
-                        if(neighborCost != 0)
-                            this->routing_table->table[tempp].node = neighbors[temp];
-                        else
-                            this->routing_table->table[tempp].node = neighbors[tempp];
+                        //We have an existing entry for tempp, see if this one is better
+                        double m = this->link_table[this->GetNumber()].destCost[tempp];
+                        if(m < this->routing_table->table[tempp].cost){
+                            this->routing_table->table[tempp].cost = m;
+                        }
+                        else if(m != this->routing_table->table[temp].cost && this->routing_table->table[temp].node->GetNumber() == tempp){
+                            this->routing_table->table[tempp].cost = m;
+                        }
                     }
                     else{
-                        //Create new path
-                        Node *nn;
-                        double d = tempCost + neighborCost;
-                        if(neighborCost != 0)
-                            nn = neighbors[temp];
-                        else
-                            nn = neighbors[tempp];
-                        CostToNode *cts = new CostToNode(d, nn);
-                        this->routing_table->insert(tempp, cts);
+                        //No entry in our table, add this one
+                        Node *nnn;
+                        if(neighbors.find(tempp) != neighbors.end()){
+                            nnn = neighbors[tempp];
+                            CostToNode *cts = new CostToNode(this->link_table[this->GetNumber()].destCost[tempp], nnn);
+                            this->routing_table->insert(tempp, cts);
+                        }
+                        else{
+                            //Not sure what to do in this case, maybe just skip?
+                            cerr << "Don't have way to access node\n";
+                            it++;
+                            continue;
+                        }
+                    }
+                }
+                else{
+                    //We don't have a direct path to tempp
+                    if(temp == this->GetNumber()){
+                        cerr << "Don't have link to tempp\n";
+                        it++;
+                        continue;
+                    }
+                    else{
+                        if(this->link_table[temp].destCost.find(tempp) != this->link_table[temp].destCost.end()){
+                            //We can access tempp through temp
+                            Node *nnn;
+                            if(neighbors.find(temp) != neighbors.end()){
+                                //temp is our neighbor
+                                nnn = neighbors[temp];
+                                double cost = this->link_table[this->GetNumber()].destCost[temp] + this->link_table[temp].destCost[tempp];
+                                CostToNode *cts = new CostToNode(cost, nnn);
+                                this->routing_table->insert(tempp, cts);
+                            }
+                            else{
+                                //temp isn't our neighbor
+                                cerr << "Dont have a way to access node\n";
+                                it++;
+                                continue;
+                            }
+                        }
+                        else{
+                            //We have no way to get to tempp, runs if we're building for two+ nodes of seperation
+                            cerr << "nope\n";
+                            it++;
+                            continue;
+                        }
                     }
                 }
                 it++;
@@ -243,6 +370,10 @@ void LinkState::buildRoutingTable(){
     }
 }
 
+//void LinkState::recurseFind(unsigned target, unsigned through){
+    
+//}
+
 void LinkState::flood(){
     //Send our link table to all known nodes in the network
     map<unsigned, CostToNode>::iterator iter = routing_table->table.begin();
@@ -251,14 +382,15 @@ void LinkState::flood(){
         unsigned target = iter->first;
         bool forward = false;
 
-        cout << "At: " << this->GetNumber()  << " Targetting: " << target << endl << *routing_table << endl;
+        LinkCosts temp = *new LinkCosts();
+        //cout << "Target: " << target << endl;
+        //cout << "At: " << this->GetNumber() << endl << *routing_table << endl;
 
         cout << *routing_table->table[target].node << endl;
-        unsigned temp = 129345923; 
         unsigned sendTo = routing_table->table[target].node->GetNumber();
         if(sendTo != target)
             forward = true;
-        m = new RoutingMessage(&this->link_table, forward, sendTo);
+        m = new RoutingMessage(&this->link_table, forward, sendTo, nodes);
         SendToNeighbor(routing_table->table[target].node, m);
         iter++;
     }

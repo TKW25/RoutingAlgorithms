@@ -41,16 +41,17 @@ struct RoutingMessage {
     // Anything else you need
 
     #if defined(LINKSTATE)
-        RoutingMessage(map<unsigned, LinkCosts> *t, bool f, unsigned tt): forward(f), target(tt), table(t) {};
+        RoutingMessage(map<unsigned, LinkCosts> *t, bool f, unsigned tt, map<unsigned, Node*> n): forward(f), target(tt), table(t), nodes(n) {};
         bool forward;
         unsigned target;
         map<unsigned, LinkCosts> *table;
+        map<unsigned, Node*> nodes;
     #endif
     #if defined(DISTANCEVECTOR)
         RoutingMessage(Table *t, unsigned s, Node *n): table(t), sender(s), sending_node(n) {}
         Table *table;
         unsigned sender;
-        Node *sending_node;
+        Node sending_node;
     #endif
 };
 

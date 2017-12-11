@@ -5,7 +5,9 @@ class Table;
 class RoutingMessage;
 #include "node.h"
 #include <vector>
+#include <set>
 #include <limits>
+#include <queue>
 class LinkState: public Node {
     private:
         // Anything you need in addition to Node members
@@ -22,12 +24,14 @@ class LinkState: public Node {
         void TimeOut();
         void buildRoutingTable();
         void flood();
+        void mergeNodes(map<unsigned, Node *> n);
         Node* GetNextHop(Node* destination);
         Table* GetRoutingTable();
         ostream & Print(ostream & os) const;
 
         // Anything else
         map<unsigned, LinkCosts> link_table;
+        map<unsigned, Node*> nodes;
 };
 
 inline ostream & operator<<(ostream & os, const LinkState & n) {
