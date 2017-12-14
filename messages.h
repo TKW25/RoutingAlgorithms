@@ -51,7 +51,7 @@ struct RoutingMessage {
         RoutingMessage(Table *t, unsigned s, Node *n): table(t), sender(s), sending_node(n) {}
         Table *table;
         unsigned sender;
-        Node sending_node;
+        Node *sending_node;
     #endif
 };
 
